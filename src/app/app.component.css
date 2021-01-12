@@ -1,0 +1,17 @@
+body {
+  margin: 0;
+}
+mat-toolbar {
+  margin-bottom: 1em;
+}
+.container {
+  padding: 0 1rem;
+}
+.fill-remaining-space {
+  /* This fills the remaining space, by using flexbox.
+     Every toolbar row uses a flexbox row layout. */
+  flex: 1 1 auto;
+}
+.sidenav-toggle {
+  margin-right: 15px;
+}

@@ -1,0 +1,17 @@
+<div class="sidenav">
+  <mat-toolbar class="sidenav-bar" color="primary"></mat-toolbar>
+  <mat-nav-list>
+    <mat-list-item routerLinkActive="active">
+      <a matLine routerLink="/">Registrants</a>
+    </mat-list-item>
+    <mat-list-item *ngIf="isSudo" routerLinkActive="active">
+      <a matLine routerLink="/users">Users</a>
+    </mat-list-item>
+    <mat-list-item routerLinkActive="active">
+      <a matLine routerLink="/settings">Settings</a>
+    </mat-list-item>
+    <mat-list-item>
+      <a matLine (click)="onLogout()">Log out</a>
+    </mat-list-item>
+  </mat-nav-list>
+</div>

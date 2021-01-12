@@ -1,0 +1,17 @@
+<mat-card>
+  <mat-card-title>Login Required:</mat-card-title>
+  <form (submit)="onLogin()">
+    <mat-form-field>
+      <input type="text" matInput placeholder="Username" required [(ngModel)]="username" name="username">
+    </mat-form-field>
+    <br>
+    <mat-form-field>
+      <input type="password" matInput placeholder="Password" required [(ngModel)]="password" name="password">
+    </mat-form-field>
+    <!-- <mat-form-field>
+      <input type="text" matInput placeholder="API key" required [(ngModel)]="username" name="apikey">
+    </mat-form-field> -->
+    <br>
+    <button type="submit" mat-raised-button color="primary">Login</button>
+  </form>
+</mat-card>

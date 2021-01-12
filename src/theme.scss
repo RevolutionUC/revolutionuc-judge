@@ -1,0 +1,62 @@
+@import '~@angular/material/theming';
+
+@include mat-core();
+
+$revuc-primary-colors: (
+  50: #ede8f3,
+  100: #d1c6e2,
+  200: #b3a1cf,
+  300: #967bbc,
+  400: #8060ad,
+  500: #6b45a0,
+  600: #63409a,
+  700: #583890,
+  800: #4e3287,
+  900: #3f2776,
+  contrast: (
+    50: $dark-primary-text,
+    100: $dark-primary-text,
+    200: $dark-primary-text,
+    300: $dark-primary-text,
+    400: $dark-primary-text,
+    500: $light-primary-text,
+    600: $light-primary-text,
+    700: $light-primary-text,
+    800: $light-primary-text,
+    900: $light-primary-text
+  )
+);
+
+$revuc-accent-colors: (
+  50: #dcf4ff,
+  100: #a6e2ff,
+  200: #61d0ff,
+  300: #00bdfd,
+  400: #00aefb,
+  500: #009ff7,
+  600: #0092e9,
+  700: #007fd5,
+  800: #006ec1,
+  900: #004e9e,
+  contrast: (
+    50: $dark-primary-text,
+    100: $dark-primary-text,
+    200: $dark-primary-text,
+    300: $dark-primary-text,
+    400: $dark-primary-text,
+    500: $dark-primary-text,
+    600: $light-primary-text,
+    700: $light-primary-text,
+    800: $light-primary-text,
+    900: $light-primary-text
+  )
+);
+
+$revuc-primary: mat-palette($revuc-primary-colors, 800, 300, 900);
+$revuc-accent: mat-palette($revuc-accent-colors, 200, 100, 500);
+
+$revuc-warn: mat-palette($mat-red);
+
+$revuc-theme: mat-light-theme($revuc-primary, $revuc-accent, $revuc-warn);
+
+@include angular-material-theme($revuc-theme);
