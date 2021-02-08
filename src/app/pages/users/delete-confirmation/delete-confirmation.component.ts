@@ -1,6 +1,7 @@
 import { Component, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { User } from '../../../interfaces/user';
+import { Judge } from '../../../interfaces/judge';
 import { SudoService } from '../../../services/sudo.service';
 
 @Component({
@@ -12,7 +13,7 @@ export class DeleteConfirmationComponent {
   isSubmitting = false
 
   constructor(
-    @Inject(MAT_DIALOG_DATA) public user: User,
+    @Inject(MAT_DIALOG_DATA) public judge: Judge,
     private service: SudoService,
     public ref: MatDialogRef<DeleteConfirmationComponent>,
   ) {}
@@ -23,7 +24,7 @@ export class DeleteConfirmationComponent {
 
   onSubmit() {
     this.isSubmitting = true;
-    this.service.deleteUser(this.user.id).subscribe(() => {
+    this.service.deleteJudge(this.judge.id).subscribe(() => {
       this.isSubmitting = false;
       this.closeDialog();
     });
