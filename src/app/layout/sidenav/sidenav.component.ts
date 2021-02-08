@@ -10,7 +10,7 @@ export class SidenavComponent {
   isSudo = false;
 
   constructor(private auth: AuthService) {
-    this.isSudo = auth.user.role === 'SUDO';
+    this.isSudo = true; //auth.user.role === 'SUDO';
   }
 
   @Output() logout = new EventEmitter<void>();
