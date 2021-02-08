@@ -1,6 +1,6 @@
 <mat-card>
-  <mat-card-title>Users</mat-card-title>
-  <button mat-icon-button color="primary" (click)="createUser()">
+  <mat-card-title>Judges</mat-card-title>
+  <button mat-icon-button color="primary" (click)="createJudge()">
     <mat-icon>person_add</mat-icon>
   </button>
   <table mat-table [dataSource]="users$ | async" *ngIf="(users$ | async).length">

@@ -4,7 +4,8 @@ import { BehaviorSubject } from 'rxjs';
 
 import { SudoService } from '../../services/sudo.service';
 import { User } from '../../interfaces/user';
-import { NewUserComponent } from './new-user/new-user.component';
+import { Judge } from '../../interfaces/judge';
+import { NewJudgeComponent } from './new-judge/new-judge.component';
 import { DeleteConfirmationComponent } from './delete-confirmation/delete-confirmation.component';
 
 @Component({
@@ -15,12 +16,13 @@ import { DeleteConfirmationComponent } from './delete-confirmation/delete-confir
 export class UsersComponent implements OnInit {
   isLoading = true;
 
-  users$: BehaviorSubject<User[]>
+  // users$: BehaviorSubject<User[]>
+  judges$: BehaviorSubject<Judge[]>
 
   columns = [
-    `username`,
-    `role`,
-    `actions`
+    `name`,
+    `email`,
+    `category`
   ];
 
   constructor(
@@ -29,19 +31,19 @@ export class UsersComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.getUsers();
+    this.getJudges();
   }
 
-  getUsers() {
-    this.users$ = this.service.users$;
-    this.service.getUsers();
+  getJudges() {
+    this.judges$ = this.service.judges$;
+    this.service.getJudges();
   }
 
-  createUser() {
-    this.dialog.open(NewUserComponent, { width: `50%` });
+  createJudge() {
+    this.dialog.open(NewJudgeComponent, { width: `50%` });
   }
 
-  deleteUser(user: User) {
-    this.dialog.open(DeleteConfirmationComponent, { width: `50%`, data: user });
+  deleteUser(judge: Judge) {
+    this.dialog.open(DeleteConfirmationComponent, { width: `50%`, data: judge });
   }
 }

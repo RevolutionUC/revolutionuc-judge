@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { UsersComponent } from './users.component';
-import { NewUserComponent } from './new-user/new-user.component';
+import { NewJudgeComponent } from './new-judge/new-judge.component';
 import { DeleteConfirmationComponent } from './delete-confirmation/delete-confirmation.component';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
@@ -16,7 +16,7 @@ import { MatInputModule } from '@angular/material/input';
 @NgModule({
   declarations: [
     UsersComponent,
-    NewUserComponent,
+    NewJudgeComponent,
     DeleteConfirmationComponent,
   ],
   imports: [
@@ -32,7 +32,7 @@ import { MatInputModule } from '@angular/material/input';
     MatTableModule,
   ],
   entryComponents: [
-    NewUserComponent,
+    NewJudgeComponent,
     DeleteConfirmationComponent,
   ],
   providers: []
