@@ -9,6 +9,13 @@ import { AuthGuard } from './auth.guard';
 import { RegistrantsComponent } from './pages/registrants/registrants.component';
 import { UsersComponent } from './pages/users/users.component';
 
+
+export enum Roles {
+  ADMIN = 'ADMIN',
+  JUDGE = 'JUDGE'
+}
+
+
 const appRoutes: Routes = [
   {
     path: 'login',
@@ -20,13 +27,19 @@ const appRoutes: Routes = [
     children: [
       {
         path: '',
-        component: RegistrantsComponent,
-        canActivate: [AuthGuard]
+        component: UsersComponent,
+        // canActivate: [AuthGuard],
+        // data: {
+        //   userRoles: [Roles.ADMIN]
+        // }
       },
       {
-        path: 'users',
+        path: 'judge',
         component: UsersComponent,
-        canActivate: [AuthGuard]
+        // canActivate: [AuthGuard],
+        // data: {
+        //   userRoles: [Roles.JUDGE]
+        // }
       }
     ]
   }
