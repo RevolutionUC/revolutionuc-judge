@@ -5,14 +5,14 @@ import { SudoService } from '../../../services/sudo.service';
 
 @Component({
   selector: 'app-new-user',
-  templateUrl: './new-user.component.html',
-  styleUrls: ['./new-user.component.css']
+  templateUrl: './new-judge.component.html',
+  styleUrls: ['./new-judge.component.css']
 })
-export class NewUserComponent {
-  newUser = new FormGroup({
-    username: new FormControl(``),
-    password: new FormControl(``),
-    role: new FormControl(``)
+export class NewJudgeComponent {
+  newJudge = new FormGroup({
+    name: new FormControl(``),
+    email: new FormControl(``),
+    category: new FormControl(``)
   })
 
   isSubmitting = false
@@ -21,7 +21,7 @@ export class NewUserComponent {
 
   constructor(
     private service: SudoService,
-    public ref: MatDialogRef<NewUserComponent>,
+    public ref: MatDialogRef<NewJudgeComponent>,
   ) {}
 
   closeDialog() {
@@ -29,10 +29,10 @@ export class NewUserComponent {
   }
 
   onSubmit() {
-    if(this.newUser.valid) {
+    if(this.newJudge.valid) {
       this.isSubmitting = true;
       this.error = false;
-      this.service.createUser(this.newUser.value).subscribe({
+      this.service.createJudge(this.newJudge.value).subscribe({
         next: () => {
           this.isSubmitting = false;
           this.closeDialog();

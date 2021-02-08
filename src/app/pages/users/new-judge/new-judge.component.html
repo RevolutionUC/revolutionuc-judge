@@ -1,0 +1,21 @@
+<h2 mat-dialog-title>New Judge</h2>
+<form [formGroup]="newJudge" (ngSubmit)="onSubmit()">
+  <div mat-dialog-content>
+    <span *ngIf="error" style="color: red;">Error creating user!</span>
+    <mat-form-field>
+      <input matInput formControlName="name" type="text" placeholder="Name" required>
+    </mat-form-field>
+    
+    <mat-form-field>
+      <input matInput formControlName="email" type="text" placeholder="Email" required>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput formControlName="category" type="text" placeholder="Category" required>
+    </mat-form-field>
+  </div>
+  <div mat-dialog-actions>
+    <button type="submit" mat-button color="primary" [disabled]="isSubmitting">Create</button>
+    <button type="reset" mat-button (click)="closeDialog()">Close</button>
+  </div>
+</form>
