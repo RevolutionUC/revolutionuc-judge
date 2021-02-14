@@ -4,7 +4,7 @@ import { MatDialogRef } from '@angular/material/dialog';
 import { SudoService } from '../../../services/sudo.service';
 
 @Component({
-  selector: 'app-new-user',
+  selector: 'app-new-judge',
   templateUrl: './new-judge.component.html',
   styleUrls: ['./new-judge.component.css']
 })
