@@ -43,7 +43,7 @@ export class UsersComponent implements OnInit {
     this.dialog.open(NewJudgeComponent, { width: `50%` });
   }
 
-  deleteUser(judge: Judge) {
+  deleteJudge(judge: Judge) {
     this.dialog.open(DeleteConfirmationComponent, { width: `50%`, data: judge });
   }
 }
