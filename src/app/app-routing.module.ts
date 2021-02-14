@@ -7,7 +7,9 @@ import { environment } from '../environments/environment';
 import { LoginComponent } from './pages/login/login.component';
 import { AuthGuard } from './auth.guard';
 import { RegistrantsComponent } from './pages/registrants/registrants.component';
+import { JudgingComponent } from './pages/judging/judging.component';
 import { JudgesComponent } from './pages/judges/judges.component';
+import { ConfigComponent } from './pages/config/config.component';
 
 
 export enum Roles {
@@ -34,11 +36,27 @@ const appRoutes: Routes = [
         // }
       },
       {
+        path: 'judging',
+        component: JudgingComponent,
+        // canActivate: [AuthGuard],
+        // data: {
+        //   userRoles: [Roles.ADMIN]
+        // }
+      },
+      {
         path: 'judges',
         component: JudgesComponent,
         // canActivate: [AuthGuard],
         // data: {
-        //   userRoles: [Roles.JUDGE]
+        //   userRoles: [Roles.ADMIN]
+        // }
+      },
+      {
+        path: 'config',
+        component: ConfigComponent,
+        // canActivate: [AuthGuard],
+        // data: {
+        //   userRoles: [Roles.ADMIN]
         // }
       }
     ]
