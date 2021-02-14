@@ -1,15 +1,21 @@
 <div class="sidenav">
   <mat-toolbar class="sidenav-bar" color="primary"></mat-toolbar>
   <mat-nav-list>
-    <mat-list-item routerLinkActive="active">
-      <a matLine routerLink="/">Registrants</a>
+    <!-- <mat-list-item routerLinkActive="active">
+      <a matLine routerLink="/">Judges</a>
+    </mat-list-item> -->
+    <mat-list-item *ngIf="isJudge" routerLinkActive="active">
+      <a matLine routerLink="/judging">Judging</a>
     </mat-list-item>
-    <mat-list-item *ngIf="isSudo" routerLinkActive="active">
+    <mat-list-item *ngIf="isAdmin" routerLinkActive="active">
       <a matLine routerLink="/judges">Judges</a>
     </mat-list-item>
-    <mat-list-item routerLinkActive="active">
-      <a matLine routerLink="/settings">Settings</a>
+    <mat-list-item *ngIf="isAdmin" routerLinkActive="active">
+      <a matLine routerLink="/config">Config</a>
     </mat-list-item>
+    <!-- <mat-list-item routerLinkActive="active">
+      <a matLine routerLink="/settings">Settings</a>
+    </mat-list-item> -->
     <mat-list-item>
       <a matLine (click)="onLogout()">Log out</a>
     </mat-list-item>
