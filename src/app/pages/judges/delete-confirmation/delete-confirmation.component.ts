@@ -1,7 +1,7 @@
 import { Component, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { User } from '../../../interfaces/user';
-import { Judge } from '../../../interfaces/judge';
+import { JudgeDto } from '../../../interfaces/judge';
 import { SudoService } from '../../../services/sudo.service';
 
 @Component({
@@ -13,7 +13,7 @@ export class DeleteConfirmationComponent {
   isSubmitting = false
 
   constructor(
-    @Inject(MAT_DIALOG_DATA) public judge: Judge,
+    @Inject(MAT_DIALOG_DATA) public judge: JudgeDto,
     private service: SudoService,
     public ref: MatDialogRef<DeleteConfirmationComponent>,
   ) {}

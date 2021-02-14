@@ -4,7 +4,7 @@ import { BehaviorSubject } from 'rxjs';
 
 import { SudoService } from '../../services/sudo.service';
 import { User } from '../../interfaces/user';
-import { Judge } from '../../interfaces/judge';
+import { JudgeDto } from '../../interfaces/judge';
 import { NewJudgeComponent } from './new-judge/new-judge.component';
 import { DeleteConfirmationComponent } from './delete-confirmation/delete-confirmation.component';
 
@@ -17,7 +17,7 @@ export class JudgesComponent implements OnInit {
   isLoading = true;
 
   // users$: BehaviorSubject<User[]>
-  judges$: BehaviorSubject<Judge[]>
+  judges$: BehaviorSubject<JudgeDto[]>
 
   columns = [
     `name`,
@@ -43,7 +43,7 @@ export class JudgesComponent implements OnInit {
     this.dialog.open(NewJudgeComponent, { width: `50%` });
   }
 
-  deleteJudge(judge: Judge) {
+  deleteJudge(judge: JudgeDto) {
     this.dialog.open(DeleteConfirmationComponent, { width: `50%`, data: judge });
   }
 }

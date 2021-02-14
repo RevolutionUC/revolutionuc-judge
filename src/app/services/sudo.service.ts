@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject } from 'rxjs';
 import { environment } from '../../environments/environment';
 import { User } from '../interfaces/user';
-import { Judge } from '../interfaces/judge';
+import { JudgeDto } from '../interfaces/judge';
 import { tap } from 'rxjs/operators';
 
 @Injectable({
@@ -13,7 +13,7 @@ export class SudoService {
   private BASE_URL: string = `${environment.BASE_URL}/sudo`;
 
   // users$ = new BehaviorSubject<User[]>([]);
-  judges$ = new BehaviorSubject<Judge[]>([]);
+  judges$ = new BehaviorSubject<JudgeDto[]>([]);
 
   constructor(private http: HttpClient) {}
 
@@ -24,7 +24,7 @@ export class SudoService {
   // }
 
   getJudges() {
-    this.http.get<Judge[]>(`${this.BASE_URL}/judges`).subscribe(judges => {
+    this.http.get<JudgeDto[]>(`${this.BASE_URL}/judges`).subscribe(judges => {
       this.judges$.next(judges);
     });
   }
@@ -35,7 +35,7 @@ export class SudoService {
   //   );
   // }
 
-  createJudge(judge: Judge) {
+  createJudge(judge: JudgeDto) {
     return this.http.post<User>(`${this.BASE_URL}/judges`, judge).pipe(
       tap(() => this.getJudges())
     );

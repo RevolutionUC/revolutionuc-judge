@@ -1,4 +1,4 @@
-export interface Judge {
+export interface JudgeDto {
   id?: string;
   name: string;
   email: string;
