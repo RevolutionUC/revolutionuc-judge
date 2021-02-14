@@ -9,11 +9,11 @@ import { NewJudgeComponent } from './new-judge/new-judge.component';
 import { DeleteConfirmationComponent } from './delete-confirmation/delete-confirmation.component';
 
 @Component({
-  selector: 'users',
-  templateUrl: './users.component.html',
-  styleUrls: ['./users.component.css'],
+  selector: 'judges',
+  templateUrl: './judges.component.html',
+  styleUrls: ['./judges.component.css'],
 })
-export class UsersComponent implements OnInit {
+export class JudgesComponent implements OnInit {
   isLoading = true;
 
   // users$: BehaviorSubject<User[]>

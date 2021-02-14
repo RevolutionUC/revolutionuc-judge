@@ -31,7 +31,7 @@ import { AuthInterceptor } from './services/http_interceptor';
 import { SidenavComponent } from './layout/sidenav/sidenav.component';
 import { DashboardComponent } from './layout/dashboard/dashboard.component';
 import { RegistrantsModule } from './pages/registrants/registrants.module';
-import { UsersModule } from './pages/users/users.module';
+import { JudgesModule } from './pages/judges/judges.module';
 
 @NgModule({
   declarations: [
@@ -70,7 +70,7 @@ import { UsersModule } from './pages/users/users.module';
     MatProgressSpinnerModule,
     MatButtonModule,
     RegistrantsModule,
-    UsersModule
+    JudgesModule
   ],
   entryComponents: [],
   providers: [{

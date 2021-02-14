@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { UsersComponent } from './users.component';
+import { JudgesComponent } from './judges.component';
 import { NewJudgeComponent } from './new-judge/new-judge.component';
 import { DeleteConfirmationComponent } from './delete-confirmation/delete-confirmation.component';
 import { MatButtonModule } from '@angular/material/button';
@@ -15,7 +15,7 @@ import { MatInputModule } from '@angular/material/input';
 
 @NgModule({
   declarations: [
-    UsersComponent,
+    JudgesComponent,
     NewJudgeComponent,
     DeleteConfirmationComponent,
   ],
@@ -37,4 +37,4 @@ import { MatInputModule } from '@angular/material/input';
   ],
   providers: []
 })
-export class UsersModule {}
+export class JudgesModule {}
