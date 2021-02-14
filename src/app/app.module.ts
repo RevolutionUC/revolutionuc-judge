@@ -32,13 +32,17 @@ import { SidenavComponent } from './layout/sidenav/sidenav.component';
 import { DashboardComponent } from './layout/dashboard/dashboard.component';
 import { RegistrantsModule } from './pages/registrants/registrants.module';
 import { JudgesModule } from './pages/judges/judges.module';
+import { ConfigComponent } from './pages/config/config.component';
+import { JudgingComponent } from './pages/judging/judging.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     DashboardComponent,
     SidenavComponent,
-    LoginComponent
+    LoginComponent,
+    ConfigComponent,
+    JudgingComponent
   ],
   imports: [
     BrowserModule,
