@@ -23,10 +23,12 @@ export class AuthService {
   }
 
   login(username: string, password: string): Observable<Login> {
-    return this.http.post<Login>(`${this.BASE_URL}/admin/login`, { username, password }).pipe(
+    return this.http.post<Login>(`${this.BASE_URL}/auth/login`, { username, password }).pipe(
       tap(({ token, user }) => {
         localStorage.setItem(this.tokenStorageKey, token);
         this.token = token;
+
+        if (user.role === `SUDO`) { user.role = `ADMIN`; }
 
         localStorage.setItem(this.userStorageKey, JSON.stringify(user));
         this.user = user;
@@ -40,6 +42,20 @@ export class AuthService {
 
     localStorage.removeItem(this.userStorageKey);
     this.user = null;
+  }
+
+  loginWithToken(token: string) {
+    return this.http.get<User>(`${this.BASE_URL}/auth/me`, {
+      headers: { Authorization: `Bearer ${token}` }
+    }).pipe(
+      tap(user => {
+        localStorage.setItem(this.tokenStorageKey, token);
+        this.token = token;
+
+        localStorage.setItem(this.userStorageKey, JSON.stringify(user));
+        this.user = user;
+      })
+    );
   }
 
   getToken(): string {

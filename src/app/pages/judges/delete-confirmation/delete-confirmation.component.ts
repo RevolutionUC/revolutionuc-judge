@@ -2,7 +2,7 @@ import { Component, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { User } from '../../../interfaces/user';
 import { Judge } from '../../../interfaces/judge';
-import { SudoService } from '../../../services/sudo.service';
+import { AdminService } from '../../../services/admin.service';
 
 @Component({
   selector: 'app-delete-confirmation',
@@ -10,11 +10,11 @@ import { SudoService } from '../../../services/sudo.service';
   styleUrls: ['./delete-confirmation.component.css']
 })
 export class DeleteConfirmationComponent {
-  isSubmitting = false
+  isSubmitting = false;
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public judge: Judge,
-    private service: SudoService,
+    private service: AdminService,
     public ref: MatDialogRef<DeleteConfirmationComponent>,
   ) {}
 

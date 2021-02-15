@@ -2,31 +2,32 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { BehaviorSubject } from 'rxjs';
 
-import { SudoService } from '../../services/sudo.service';
+import { AdminService } from '../../services/admin.service';
 import { User } from '../../interfaces/user';
 import { Judge } from '../../interfaces/judge';
 import { NewJudgeComponent } from './new-judge/new-judge.component';
 import { DeleteConfirmationComponent } from './delete-confirmation/delete-confirmation.component';
+import { SendEmailDialogComponent } from './send-email-dialog/send-email-dialog.component';
 
 @Component({
-  selector: 'users',
-  templateUrl: './users.component.html',
-  styleUrls: ['./users.component.css'],
+  selector: 'judges',
+  templateUrl: './judges.component.html',
+  styleUrls: ['./judges.component.css'],
 })
-export class UsersComponent implements OnInit {
+export class JudgesComponent implements OnInit {
   isLoading = true;
 
-  // users$: BehaviorSubject<User[]>
-  judges$: BehaviorSubject<Judge[]>
+  judges$: BehaviorSubject<Judge[]>;
 
   columns = [
     `name`,
     `email`,
-    `category`
+    `category`,
+    `actions`
   ];
 
   constructor(
-    private service: SudoService,
+    private service: AdminService,
     private dialog: MatDialog
   ) {}
 
@@ -45,5 +46,9 @@ export class UsersComponent implements OnInit {
 
   deleteUser(judge: Judge) {
     this.dialog.open(DeleteConfirmationComponent, { width: `50%`, data: judge });
+  }
+
+  sendEmail(judge: Judge) {
+    this.dialog.open(SendEmailDialogComponent, { width: `50%`, data: judge });
   }
 }

@@ -9,36 +9,27 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatTableModule } from '@angular/material/table';
 import { MatButtonModule } from '@angular/material/button';
-import { RegistrantsComponent } from './registrants.component';
-import { RegistrantViewComponent } from './registrant-view/registrant-view.component';
-import { SendEmailDialogComponent } from './send-email-dialog/send-email-dialog.component';
+import { ProjectsComponent } from './projects.component';
 import { MatSelectModule } from '@angular/material/select';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   declarations: [
-    RegistrantsComponent,
-    RegistrantViewComponent,
-    SendEmailDialogComponent
+    ProjectsComponent,
   ],
   imports: [
     CommonModule,
+    FormsModule,
     ReactiveFormsModule,
     MatButtonModule,
     MatCardModule,
-    MatCheckboxModule,
-    MatGridListModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatPaginatorModule,
-    MatSelectModule,
+    MatIconModule,
     MatTableModule,
     MatProgressSpinnerModule
   ],
   entryComponents: [
-    RegistrantViewComponent,
-    SendEmailDialogComponent
   ],
   providers: []
 })
-export class RegistrantsModule {}
+export class ProjectsModule {}

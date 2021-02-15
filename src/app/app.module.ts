@@ -30,8 +30,10 @@ import { LoginComponent } from './pages/login/login.component';
 import { AuthInterceptor } from './services/http_interceptor';
 import { SidenavComponent } from './layout/sidenav/sidenav.component';
 import { DashboardComponent } from './layout/dashboard/dashboard.component';
-import { RegistrantsModule } from './pages/registrants/registrants.module';
-import { UsersModule } from './pages/users/users.module';
+import { JudgesModule } from './pages/judges/judges.module';
+import { ProjectsModule } from './pages/projects/projects.module';
+import { SubmissionsModule } from './pages/submissions/submissions.module';
+import { AssignmentModule } from './pages/assignment/assignment.module';
 
 @NgModule({
   declarations: [
@@ -69,8 +71,10 @@ import { UsersModule } from './pages/users/users.module';
     MatSidenavModule,
     MatProgressSpinnerModule,
     MatButtonModule,
-    RegistrantsModule,
-    UsersModule
+    ProjectsModule,
+    JudgesModule,
+    AssignmentModule,
+    SubmissionsModule
   ],
   entryComponents: [],
   providers: [{

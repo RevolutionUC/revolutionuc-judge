@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Output } from '@angular/core';
+import { Role } from 'src/app/interfaces/user';
 import { AuthService } from '../../services/auth.service';
 
 @Component({
@@ -8,9 +9,10 @@ import { AuthService } from '../../services/auth.service';
 })
 export class SidenavComponent {
   isSudo = false;
+  role: Role;
 
   constructor(private auth: AuthService) {
-    this.isSudo = true; //auth.user.role === 'SUDO';
+    this.role = auth.user.role;
   }
 
   @Output() logout = new EventEmitter<void>();

@@ -1,8 +1,10 @@
+export type Role = 'SUDO' | 'ADMIN' | 'JUDGE' | 'HACKER';
+
 export interface User {
   id?: string;
   username: string;
   password?: string;
-  role: 'SUDO' | 'ADMIN' | 'JUDGE' | 'HACKER';
+  role: Role;
 }
 
 export interface Login {

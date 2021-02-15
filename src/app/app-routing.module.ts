@@ -3,18 +3,14 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { DashboardComponent } from './layout/dashboard/dashboard.component';
 
-import { environment } from '../environments/environment';
 import { LoginComponent } from './pages/login/login.component';
 import { AuthGuard } from './auth.guard';
-import { RegistrantsComponent } from './pages/registrants/registrants.component';
-import { UsersComponent } from './pages/users/users.component';
+import { JudgesComponent } from './pages/judges/judges.component';
+import { ProjectsComponent } from './pages/projects/projects.component';
+import { SubmissionsComponent } from './pages/submissions/submissions.component';
+import { AssignmentComponent } from './pages/assignment/assignment.component';
 
-
-export enum Roles {
-  ADMIN = 'ADMIN',
-  JUDGE = 'JUDGE'
-}
-
+enum Roles { ADMIN = 'ADMIN', JUDGE = 'JUDGE' }
 
 const appRoutes: Routes = [
   {
@@ -24,22 +20,39 @@ const appRoutes: Routes = [
   {
     path: '',
     component: DashboardComponent,
+    canActivate: [AuthGuard],
     children: [
       {
-        path: '',
-        component: UsersComponent,
-        // canActivate: [AuthGuard],
-        // data: {
-        //   userRoles: [Roles.ADMIN]
-        // }
+        path: 'judges',
+        component: JudgesComponent,
+        canActivate: [AuthGuard],
+        data: {
+          requiredRole: Roles.ADMIN
+        }
       },
       {
-        path: 'judge',
-        component: UsersComponent,
-        // canActivate: [AuthGuard],
-        // data: {
-        //   userRoles: [Roles.JUDGE]
-        // }
+        path: 'projects',
+        component: ProjectsComponent,
+        canActivate: [AuthGuard],
+        data: {
+          requiredRole: Roles.ADMIN
+        }
+      },
+      {
+        path: 'assignment',
+        component: AssignmentComponent,
+        canActivate: [AuthGuard],
+        data: {
+          requiredRole: Roles.ADMIN
+        }
+      },
+      {
+        path: 'submissions',
+        component: SubmissionsComponent,
+        canActivate: [AuthGuard],
+        data: {
+          requiredRole: Roles.JUDGE
+        }
       }
     ]
   }

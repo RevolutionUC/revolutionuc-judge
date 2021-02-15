@@ -1,0 +1,6 @@
+<h2 mat-dialog-title>{{project.title}}</h2>
+<div mat-dialog-content>
+  <p><strong>Tagline: </strong>{{project.tagline}}</p>
+  <p><strong>Submitter: </strong>{{project.submitterName}} &lt;{{project.submitterEmail}}&gt;</p>
+  <p><strong>Devpost: </strong><a [href]="project.url" target="_blank">{{project.url}}</a></p>
+</div>

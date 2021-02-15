@@ -2,3 +2,12 @@ mat-card {
   margin: 15px;
   text-align: center;
 }
+mat-card-title {
+  margin-bottom: 25px;
+}
+h2 {
+  margin-top: 20px;
+}
+.error-text {
+  color: red;
+}

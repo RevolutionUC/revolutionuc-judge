@@ -7,11 +7,15 @@
     </mat-form-field>
     
     <mat-form-field>
-      <input matInput formControlName="email" type="text" placeholder="Email" required>
+      <input matInput formControlName="email" type="email" placeholder="Email" required>
     </mat-form-field>
 
     <mat-form-field>
-      <input matInput formControlName="category" type="text" placeholder="Category" required>
+      <mat-label>Category</mat-label>
+      <select matNativeControl formControlName="category" required>
+        <option selected disabled>Select Category</option>
+        <option *ngFor="let c of categories" [value]="c.id">{{c.name}}</option>
+      </select>
     </mat-form-field>
   </div>
   <div mat-dialog-actions>

@@ -1,0 +1,72 @@
+<mat-card>
+  <mat-card-title>Projects</mat-card-title>
+  <form>
+    <input #fileInput type="file" style="display: none;" (change)="onFileSelect($event.target.files[0])" />
+  </form>
+  <button mat-button color="primary" class="select-button" (click)="fileInput.click()">
+    <mat-icon>file_copy</mat-icon>
+    {{file?.name || "Select Devpost CSV File"}}
+  </button>
+  <button mat-button color="accent" class="upload-button" (click)="uploadFile()" *ngIf="!!file">
+    <ng-container *ngIf="!isUploading">
+      <mat-icon>upload</mat-icon>
+      Upload
+    </ng-container>
+    <ng-container *ngIf="isUploading">
+      Uploading...
+    </ng-container>
+  </button><br><br>
+  <ng-container *ngIf="projects$ | async as projects; else loadingOrError">
+    <table
+      mat-table
+      [dataSource]="projects"
+      *ngIf="projects?.length"
+    >
+      <ng-container matColumnDef="index">
+        <th mat-header-cell *matHeaderCellDef>#</th>
+        <td mat-cell *matCellDef="let index = index">{{index + 1}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="title">
+        <th mat-header-cell *matHeaderCellDef>Title</th>
+        <td mat-cell *matCellDef="let project"><a [href]="project.url">{{project.title}}</a></td>
+      </ng-container>
+
+      <ng-container matColumnDef="submitter">
+        <th mat-header-cell *matHeaderCellDef>Submitter</th>
+        <td mat-cell *matCellDef="let project">{{project.submitterName}} &lt;{{project.submitterEmail}}&gt; </td>
+      </ng-container>
+
+      <ng-container matColumnDef="categories">
+        <th mat-header-cell *matHeaderCellDef>Categories</th>
+        <td mat-cell *matCellDef="let project">{{project.categories}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef>Actions</th>
+        <td mat-cell *matCellDef="let project">
+          <ng-container *ngIf="project.disqualified; then undqButton else dqButton"></ng-container>
+          <ng-template #dqButton>
+            <button mat-button color="warn">Disqualify</button>
+          </ng-template>
+          <ng-template #undqButton>
+            <button mat-button color="accent">Undisqualify</button>
+          </ng-template>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="columns"></tr>
+      <tr mat-row *matRowDef="let myRowData; columns: columns"></tr>
+    </table>
+  </ng-container>
+  <ng-template #loadingOrError>
+    <ng-container *ngIf="(getProjectsError$ | async); then error else loading"></ng-container>
+    <ng-template #loading>
+      <mat-spinner></mat-spinner>
+    </ng-template>
+    <ng-template #error>
+      <span style="color: red;">There was an error loading projects</span>
+    </ng-template>
+  </ng-template>
+</mat-card>
+

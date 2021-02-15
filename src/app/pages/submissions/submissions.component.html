@@ -1,0 +1,76 @@
+<mat-card>
+  <ng-container *ngIf="!!judge?.group; then submissions else noGroupOrLoading"></ng-container>
+  <ng-template #submissions>
+    <div class="header">
+      <mat-card-title>Judge Dashboard</mat-card-title>
+      <div class="greeting">
+        <h2>Welcome, {{judge?.name}}</h2>
+      </div>
+    </div>
+    <h3>
+      {{judge.group?.name}} <br>
+      Judging category: {{judge.category}} <br> <br>
+      <button mat-raised-button color="accent" (click)="finalizeRankings()" *ngIf="!judge.isFinal">Finalize rankings</button>
+      <button mat-raised-button color="accent" disabled *ngIf="judge.isFinal">Rankings Finalized</button>
+    </h3>
+
+    <ng-container *ngIf="judge.isFinal; else notFinal">
+      <div class="example-container">
+        <div class="example-box no-drag" *ngFor="let item of rankings">
+          {{findSubmissionById(item).project.title}}
+          <button mat-button color="primary" (click)="viewProject(findSubmissionById(item).project)">View</button>
+        </div>
+      </div>
+    </ng-container>
+    <ng-template #notFinal>
+      <div class="example-container">
+        <h2>Submissions</h2>
+        <div
+          cdkDropList
+          #todoList="cdkDropList"
+          [cdkDropListData]="todo"
+          [cdkDropListConnectedTo]="[doneList]"
+          class="example-list"
+          (cdkDropListDropped)="drop($event)"
+        >
+          <div class="example-box" *ngFor="let item of todo" cdkDrag>
+            {{findSubmissionById(item).project.title}}
+            <button mat-button color="primary" (click)="viewProject(findSubmissionById(item).project)">View</button>
+          </div>
+        </div>
+      </div>
+  
+      <div class="example-container">
+        <h2>
+          Ranked
+          <mat-spinner diameter="35" style="float: right;" *ngIf="isUpdating"></mat-spinner>
+        </h2>
+        <div
+          cdkDropList
+          #doneList="cdkDropList"
+          [cdkDropListData]="rankings"
+          [cdkDropListConnectedTo]="[todoList]"
+          class="example-list"
+          (cdkDropListDropped)="drop($event)"
+        >
+          <div class="example-box" *ngFor="let item of rankings" cdkDrag>
+            {{findSubmissionById(item).project.title}}
+            <button mat-button color="primary" (click)="viewProject(findSubmissionById(item).project)">View</button>
+          </div>
+        </div>
+      </div>
+    </ng-template>
+  </ng-template>
+  <ng-template #noGroupOrLoading>
+    <mat-spinner *ngIf="isLoading; else noGroup"></mat-spinner>
+    
+    <ng-template #noGroup>
+      <div class="header">
+        <mat-card-title>Judge Dashboard</mat-card-title>
+        <h2 class="greeting">Welcome, {{judge?.name}}</h2>
+      </div>
+      <h3>You have not been assigned to a judging group yet! <br> Please wait till we have processed all the submissions.</h3>
+    </ng-template>
+  </ng-template>
+
+</mat-card>

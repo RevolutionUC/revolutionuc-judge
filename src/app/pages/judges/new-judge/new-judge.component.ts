@@ -1,45 +1,53 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
-import { SudoService } from '../../../services/sudo.service';
+import { Category } from 'src/app/interfaces/category';
+import { AdminService } from '../../../services/admin.service';
 
 @Component({
   selector: 'app-new-user',
   templateUrl: './new-judge.component.html',
   styleUrls: ['./new-judge.component.css']
 })
-export class NewJudgeComponent {
+export class NewJudgeComponent implements OnInit {
   newJudge = new FormGroup({
     name: new FormControl(``),
     email: new FormControl(``),
     category: new FormControl(``)
-  })
+  });
 
-  isSubmitting = false
+  isSubmitting = false;
+  error = false;
 
-  error = false
+  categories: Category[] = [];
 
   constructor(
-    private service: SudoService,
+    private service: AdminService,
     public ref: MatDialogRef<NewJudgeComponent>,
   ) {}
+
+  ngOnInit() {
+    this.service.getCategories().subscribe(categories => this.categories = categories);
+  }
 
   closeDialog() {
     this.ref.close();
   }
 
   onSubmit() {
-    if(this.newJudge.valid) {
+    if (this.newJudge.valid) {
       this.isSubmitting = true;
       this.error = false;
+      console.log(this.newJudge.value);
       this.service.createJudge(this.newJudge.value).subscribe({
         next: () => {
-          this.isSubmitting = false;
           this.closeDialog();
         },
         error: err => {
-          this.isSubmitting = false;
           this.error = true;
+        },
+        complete: () => {
+          this.isSubmitting = false;
         }
       });
     }
