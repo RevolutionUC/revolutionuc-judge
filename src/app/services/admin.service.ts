@@ -67,4 +67,14 @@ export class AdminService {
       tap(data => console.log({ data }))
     );
   }
+
+  getPrizingInfo() {
+    return this.http.get<Array<Submission>>(`${this.BASE_URL}/prizing`, {}).pipe(
+      tap(data => console.log({ data }))
+    );
+  }
+
+  initiateScoring() {
+    return this.http.post<void>(`${this.BASE_URL}/prizing`, {});
+  }
 }

@@ -34,6 +34,7 @@ import { JudgesModule } from './pages/judges/judges.module';
 import { ProjectsModule } from './pages/projects/projects.module';
 import { SubmissionsModule } from './pages/submissions/submissions.module';
 import { AssignmentModule } from './pages/assignment/assignment.module';
+import { PrizingModule } from './pages/prizing/prizing.module';
 
 @NgModule({
   declarations: [
@@ -74,6 +75,7 @@ import { AssignmentModule } from './pages/assignment/assignment.module';
     ProjectsModule,
     JudgesModule,
     AssignmentModule,
+    PrizingModule,
     SubmissionsModule
   ],
   entryComponents: [],
