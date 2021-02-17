@@ -1,40 +1,45 @@
 <mat-card>
-  <mat-card-title>Judging Assignment</mat-card-title>
+  <mat-card-title>Prizing</mat-card-title>
   <ng-container *ngIf="isLoading; then loading else finishedLoading"></ng-container>
   <ng-template #loading>
     <mat-spinner *ngIf="isLoading"></mat-spinner>
   </ng-template>
   <ng-template #finishedLoading>
-    <ng-container *ngIf="groups.length; then showGroups else noGroups"></ng-container>
-    <ng-template #showGroups>
-      <h3>Groups: {{groups.length}}</h3>
+    <ng-container *ngIf="error">
+      <h2>{{error}}</h2>
+    </ng-container>
+    <ng-container *ngIf="indeterminateJudge">
+      <h2>Some judges are still ranking projects. Please wait till they have finished.</h2>
+    </ng-container>
+    <ng-container *ngIf="notStarted">
+      <h2>All the judges have turned in their rankings. You can now initiate scoring.</h2>
 
-      <button mat-button color="primary" (click)="downloadSubmissionCsv()">Download Submission Assignment CSV</button>
-      <br>
-      <button mat-button color="primary" (click)="downloadJudgeCsv()">Download Judging Assignment CSV</button>
+      <button mat-button color="primary" class="assign-button" [disabled]="isWorking" (click)="initiateScoring()">
+        <ng-container *ngIf="!isWorking; else working">
+          <mat-icon>assignment</mat-icon>
+          Click here to initiate scoring
+        </ng-container>
+        <ng-template #working>
+          <mat-spinner diameter="34"></mat-spinner>
+        </ng-template>
+      </button>
+    </ng-container>
+    <ng-container *ngIf="submissions.length">
+      <h3>Scored submissions: {{submissions.length}}</h3>
 
-      <!-- <mat-list *ngFor="let group of groups">
-        <h3>{{group.name}} {{group.submissions.length}}</h3>
-        <mat-list-item *ngFor="let submission of group.submissions">{{submission.project.title}}</mat-list-item>
-      </mat-list> -->
-    </ng-template>
-    <ng-template #noGroups>
-      <ng-container *ngIf="error; else noError">
-        Error: {{error}}
-      </ng-container>
-      <ng-template #noError>
-        <h3>Assignment has not been started yet!</h3>
-
-        <button mat-button color="primary" class="assign-button" [disabled]="isWorking" (click)="initiateAssignment()">
-          <ng-container *ngIf="!isWorking; else working">
-            <mat-icon>assignment</mat-icon>
-            Click here to initiate automatic assignment
-          </ng-container>
-          <ng-template #working>
-            <mat-spinner diameter="34"></mat-spinner>
-          </ng-template>
-        </button>
-      </ng-template>
-    </ng-template>
+      <mat-form-field appearance="fill">
+        <
+        <mat-select [(ngModel)]="selectedCategory">
+          <mat-option selected disabled>Select Category</mat-option>
+          <mat-option *ngFor="let category of categories" [value]="category">{{category}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      
+      <mat-list>
+        <mat-list-item *ngFor="let submission of getSubmissionsForSelectedCategory()">
+          {{submission.project.title}} = {{submission.score}}
+        </mat-list-item>
+      </mat-list>
+    </ng-container>
   </ng-template>
 </mat-card>

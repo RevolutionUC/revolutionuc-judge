@@ -4,6 +4,7 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { Submission } from 'src/app/interfaces/submission';
 import { JudgeService } from 'src/app/services/judge.service';
 
+export interface FinalizeData { rankings: Array<Submission>; cb: () => void; }
 
 @Component({
   selector: 'finalize',
@@ -16,18 +17,18 @@ export class FinalizeComponent implements OnInit {
   submitButtonColor: ThemePalette = `primary`;
 
   constructor(
-    @Inject(MAT_DIALOG_DATA) public rankings: Array<Submission>,
+    @Inject(MAT_DIALOG_DATA) public data: FinalizeData,
     public ref: MatDialogRef<FinalizeComponent>,
     private service: JudgeService
   ) {}
 
   ngOnInit() {
-    if (this.rankings.length > 5) {
+    if (this.data.rankings.length > 5) {
       this.submitButtonColor = `warn`;
       this.submitButtonText = `Please only rank your top 5`;
       return;
     }
-    if (this.rankings.length < 5) {
+    if (this.data.rankings.length < 5) {
       this.submitButtonColor = `warn`;
       this.submitButtonText = `Please rank at-least 5 projects`;
       return;
@@ -40,6 +41,7 @@ export class FinalizeComponent implements OnInit {
     this.service.submitRanking().subscribe({
       next: () => {
         this.ref.close();
+        this.data.cb();
       },
       error: err => console.error(err)
     });

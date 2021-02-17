@@ -9,7 +9,7 @@ import { Category } from 'src/app/interfaces/category';
 import { ProjectViewComponent } from './project-view/project-view.component';
 import { Project } from 'src/app/interfaces/project';
 import { Submission } from 'src/app/interfaces/submission';
-import { FinalizeComponent } from './finalize/finalize.component';
+import { FinalizeComponent, FinalizeData } from './finalize/finalize.component';
 
 @Component({
   selector: 'submissions',
@@ -42,10 +42,11 @@ export class SubmissionsComponent implements OnInit {
   }
 
   getJudge() {
+    this.isLoading = true;
     this.service.getJudge().subscribe(judge => {
       judge.category = (judge.category as Category).name;
       this.judge = judge;
-      this.rankings = judge.rankings;
+      this.rankings = judge.rankings || [];
       this.todo.push(...judge.group.submissions.map(s => s.id).filter(id => !judge.rankings?.includes(id)));
       this.isLoading = false;
     });
@@ -62,13 +63,13 @@ export class SubmissionsComponent implements OnInit {
         event.currentIndex
       );
 
-      /* this.isUpdating = true;
+      this.isUpdating = true;
       this.service
         .rankSubmissions(this.rankings)
         .subscribe(j => {
           this.rankings = j.rankings;
           this.isUpdating = false;
-        }); */
+        });
     }
   }
 
@@ -77,9 +78,10 @@ export class SubmissionsComponent implements OnInit {
   }
 
   finalizeRankings() {
-    const data: Array<Submission> = this.rankings.map(id => {
-      return this.findSubmissionById(id);
-    });
+    const data: FinalizeData = {
+      rankings:  this.rankings.map(id => this.findSubmissionById(id)),
+      cb: () => this.getJudge()
+    };
 
     this.dialog.open(FinalizeComponent, { width: `50%`, data });
   }

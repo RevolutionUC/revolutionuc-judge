@@ -9,6 +9,7 @@ import { JudgesComponent } from './pages/judges/judges.component';
 import { ProjectsComponent } from './pages/projects/projects.component';
 import { SubmissionsComponent } from './pages/submissions/submissions.component';
 import { AssignmentComponent } from './pages/assignment/assignment.component';
+import { PrizingComponent } from './pages/prizing/prizing.component';
 
 enum Roles { ADMIN = 'ADMIN', JUDGE = 'JUDGE' }
 
@@ -41,6 +42,14 @@ const appRoutes: Routes = [
       {
         path: 'assignment',
         component: AssignmentComponent,
+        canActivate: [AuthGuard],
+        data: {
+          requiredRole: Roles.ADMIN
+        }
+      },
+      {
+        path: 'prizing',
+        component: PrizingComponent,
         canActivate: [AuthGuard],
         data: {
           requiredRole: Roles.ADMIN
