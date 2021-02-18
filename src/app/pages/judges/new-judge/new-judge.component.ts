@@ -5,7 +5,7 @@ import { Category } from 'src/app/interfaces/category';
 import { AdminService } from '../../../services/admin.service';
 
 @Component({
-  selector: 'app-new-user',
+  selector: 'new-judge',
   templateUrl: './new-judge.component.html',
   styleUrls: ['./new-judge.component.css']
 })
@@ -38,7 +38,6 @@ export class NewJudgeComponent implements OnInit {
     if (this.newJudge.valid) {
       this.isSubmitting = true;
       this.error = false;
-      console.log(this.newJudge.value);
       this.service.createJudge(this.newJudge.value).subscribe({
         next: () => {
           this.closeDialog();

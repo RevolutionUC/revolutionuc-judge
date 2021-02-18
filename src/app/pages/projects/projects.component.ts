@@ -28,8 +28,7 @@ export class ProjectsComponent implements OnInit {
 
   numCheckedIn: number;
 
-  constructor(
-    private service: AdminService  ) {}
+  constructor(private service: AdminService) {}
 
   ngOnInit() {
     this.getProjects();
@@ -44,7 +43,7 @@ export class ProjectsComponent implements OnInit {
         });
       }),
       catchError(err => {
-        console.error({ err });
+        console.error(err);
         this.getProjectsError$.next(true);
         return of(null);
       })
@@ -61,6 +60,7 @@ export class ProjectsComponent implements OnInit {
       complete: () => {
         this.isUploading = false;
         this.file = null;
+        this.getProjects();
       }
     });
   }

@@ -5,7 +5,7 @@ import { Judge } from '../../../interfaces/judge';
 import { AdminService } from '../../../services/admin.service';
 
 @Component({
-  selector: 'app-delete-confirmation',
+  selector: 'delete-confirmation',
   templateUrl: './delete-confirmation.component.html',
   styleUrls: ['./delete-confirmation.component.css']
 })

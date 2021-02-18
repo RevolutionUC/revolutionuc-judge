@@ -1,7 +1,7 @@
 <h2 mat-dialog-title>New Judge</h2>
 <form [formGroup]="newJudge" (ngSubmit)="onSubmit()">
   <div mat-dialog-content>
-    <span *ngIf="error" style="color: red;">Error creating user!</span>
+    <span *ngIf="error" style="color: red;">Error creating judge!</span>
     <mat-form-field>
       <input matInput formControlName="name" type="text" placeholder="Name" required>
     </mat-form-field>

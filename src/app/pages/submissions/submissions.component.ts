@@ -79,7 +79,8 @@ export class SubmissionsComponent implements OnInit {
 
   finalizeRankings() {
     const data: FinalizeData = {
-      rankings:  this.rankings.map(id => this.findSubmissionById(id)),
+      totalSubmissions: (this.todo.length + this.rankings.length),
+      rankings: this.rankings.map(id => this.findSubmissionById(id)),
       cb: () => this.getJudge()
     };
 

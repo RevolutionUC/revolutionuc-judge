@@ -2,7 +2,6 @@ import { Component, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { Project } from 'src/app/interfaces/project';
 
-
 @Component({
   selector: 'project-view',
   templateUrl: './project-view.component.html',

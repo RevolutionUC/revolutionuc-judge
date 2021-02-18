@@ -1,6 +1,12 @@
 <h2 mat-dialog-title>{{project.title}}</h2>
 <div mat-dialog-content>
-  <p><strong>Tagline: </strong>{{project.tagline}}</p>
-  <p><strong>Submitter: </strong>{{project.submitterName}} &lt;{{project.submitterEmail}}&gt;</p>
+  <p><strong>Submitter: </strong>{{project.submitter}}</p>
   <p><strong>Devpost: </strong><a [href]="project.url" target="_blank">{{project.url}}</a></p>
+  <p *ngIf="project.team?.length">
+    <strong>Team: </strong>
+    <span *ngFor="let member of project.team">
+      <br>
+      {{member}}
+    </span>
+  </p>
 </div>

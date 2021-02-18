@@ -28,7 +28,6 @@
       <h3>Scored submissions: {{submissions.length}}</h3>
 
       <mat-form-field appearance="fill">
-        <
         <mat-select [(ngModel)]="selectedCategory">
           <mat-option selected disabled>Select Category</mat-option>
           <mat-option *ngFor="let category of categories" [value]="category">{{category}}</mat-option>

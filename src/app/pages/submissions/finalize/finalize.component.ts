@@ -4,7 +4,7 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { Submission } from 'src/app/interfaces/submission';
 import { JudgeService } from 'src/app/services/judge.service';
 
-export interface FinalizeData { rankings: Array<Submission>; cb: () => void; }
+export interface FinalizeData { totalSubmissions: number; rankings: Array<Submission>; cb: () => void; }
 
 @Component({
   selector: 'finalize',
@@ -29,6 +29,10 @@ export class FinalizeComponent implements OnInit {
       return;
     }
     if (this.data.rankings.length < 5) {
+      if (this.data.rankings.length === this.data.totalSubmissions) {
+        this.canSubmit = true;
+        return;
+      }
       this.submitButtonColor = `warn`;
       this.submitButtonText = `Please rank at-least 5 projects`;
       return;

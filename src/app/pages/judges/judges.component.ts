@@ -3,7 +3,6 @@ import { MatDialog } from '@angular/material/dialog';
 import { BehaviorSubject } from 'rxjs';
 
 import { AdminService } from '../../services/admin.service';
-import { User } from '../../interfaces/user';
 import { Judge } from '../../interfaces/judge';
 import { NewJudgeComponent } from './new-judge/new-judge.component';
 import { DeleteConfirmationComponent } from './delete-confirmation/delete-confirmation.component';
@@ -20,10 +19,8 @@ export class JudgesComponent implements OnInit {
   judges$: BehaviorSubject<Judge[]>;
 
   columns = [
-    `name`,
-    `email`,
-    `category`,
-    `actions`
+    `name`, `email`,
+    `category`, `actions`
   ];
 
   constructor(

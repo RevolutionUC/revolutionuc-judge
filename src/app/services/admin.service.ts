@@ -15,13 +15,12 @@ import { Submission } from '../interfaces/submission';
 export class AdminService {
   private BASE_URL = `${environment.BASE_URL}/admin`;
 
-  judges$ = new BehaviorSubject<Judge[]>([]);
+  judges$ = new BehaviorSubject<Judge[] | null>(null);
 
   constructor(private http: HttpClient) {}
 
   getJudges() {
     this.http.get<Judge[]>(`${this.BASE_URL}/judge`).subscribe(judges => {
-      console.log({ judges });
       this.judges$.next(judges);
     });
   }
@@ -57,21 +56,15 @@ export class AdminService {
   }
 
   getGroups() {
-    return this.http.get<Array<Group>>(`${this.BASE_URL}/group`).pipe(
-      tap(data => console.log({ data }))
-    );
+    return this.http.get<Array<Group>>(`${this.BASE_URL}/group`);
   }
 
   initiateAssignment() {
-    return this.http.post<Array<Group>>(`${this.BASE_URL}/assignment`, {}).pipe(
-      tap(data => console.log({ data }))
-    );
+    return this.http.post<Array<Group>>(`${this.BASE_URL}/assignment`, {});
   }
 
   getPrizingInfo() {
-    return this.http.get<Array<Submission>>(`${this.BASE_URL}/prizing`, {}).pipe(
-      tap(data => console.log({ data }))
-    );
+    return this.http.get<Array<Submission>>(`${this.BASE_URL}/prizing`, {});
   }
 
   initiateScoring() {

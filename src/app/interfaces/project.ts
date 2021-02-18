@@ -4,11 +4,9 @@ export interface Project {
   id: string;
   title: string;
   url: string;
-  tagline: string;
-  description: string;
-  submitterEmail: string;
-  submitterName: string;
-  disqualified?: string;
-  submissions: Submission[];
+  submitter: string;
   categories?: string;
+  disqualified?: string;
+  team: string[];
+  submissions: Submission[];
 }
