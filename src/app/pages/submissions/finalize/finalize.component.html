@@ -1,6 +1,6 @@
 <h2 mat-dialog-title>Finalize these rankings?</h2>
 <div mat-dialog-content>
-  <p *ngFor="let submission of rankings; index as i">
+  <p *ngFor="let submission of data.rankings; index as i">
     <strong>{{i + 1}}: </strong>{{submission.project.title}}
   </p>
 
