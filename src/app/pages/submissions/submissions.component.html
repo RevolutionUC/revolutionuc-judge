@@ -12,6 +12,7 @@
       Judging category: {{judge.category}} <br> <br>
       <button mat-raised-button color="accent" (click)="finalizeRankings()" *ngIf="!judge.isFinal">Finalize rankings</button>
       <button mat-raised-button color="accent" disabled *ngIf="judge.isFinal">Rankings Finalized</button>
+      <p>Please only rank your top 5.</p>
     </h3>
 
     <ng-container *ngIf="judge.isFinal; else notFinal">
