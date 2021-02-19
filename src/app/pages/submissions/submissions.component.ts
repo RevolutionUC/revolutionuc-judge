@@ -38,7 +38,7 @@ export class SubmissionsComponent implements OnInit {
   }
 
   findSubmissionById(id: string) {
-    return this.judge.group.submissions.find(s => s.id === id);
+    return this.judge.group?.submissions.find(s => s.id === id);
   }
 
   getJudge() {
@@ -47,7 +47,7 @@ export class SubmissionsComponent implements OnInit {
       judge.category = (judge.category as Category).name;
       this.judge = judge;
       this.rankings = judge.rankings || [];
-      this.todo.push(...judge.group.submissions.map(s => s.id).filter(id => !judge.rankings?.includes(id)));
+      this.todo.push(...judge.group?.submissions.map(s => s.id).filter(id => !judge.rankings?.includes(id)));
       this.isLoading = false;
     });
   }
