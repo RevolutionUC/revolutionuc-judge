@@ -38,6 +38,19 @@ export class AssignmentService {
     link.click();
   }
 
+  private getGroupSubmissionTitle(group: Group, i: number) {
+    const submission = group.submissions[i];
+    if (!submission) {
+      return ``;
+    }
+    const disqualified = !!submission.project.disqualified;
+    console.log({ disqualified, submission: submission.project.title });
+    if (disqualified) {
+      return `(DQ) ${submission.project.title}`;
+    }
+    return submission.project.title;
+  }
+
   downloadSubmissionCsv(groups: Group[]) {
     groups.sort(this.sortGroupsBySubmissionLength);
     const csvLength = groups[0].submissions.length;
@@ -57,7 +70,7 @@ export class AssignmentService {
     for (let i = 0; i < csvLength; i++) {
       const row = {};
       groups.forEach(group => {
-        row[group.name] = group.submissions[i]?.project.title || ``;
+        row[group.name] = this.getGroupSubmissionTitle(group, i);
       });
       json.push(row);
     }
