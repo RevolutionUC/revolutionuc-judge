@@ -29,17 +29,26 @@
 
       <ng-container matColumnDef="title">
         <th mat-header-cell *matHeaderCellDef>Title</th>
-        <td mat-cell *matCellDef="let project"><a [href]="project.url">{{project.title}}</a></td>
+        <td mat-cell *matCellDef="let project">
+          <del *ngIf="project.disqualified"><a [href]="project.url">{{project.title}}</a></del>
+          <span *ngIf="!project.disqualified"><a [href]="project.url">{{project.title}}</a></span>
+        </td>
       </ng-container>
 
       <ng-container matColumnDef="submitter">
         <th mat-header-cell *matHeaderCellDef>Submitter</th>
-        <td mat-cell *matCellDef="let project">{{project.submitter}}</td>
+        <td mat-cell *matCellDef="let project">
+          <del *ngIf="project.disqualified">{{project.submitter}}</del>
+          <span *ngIf="!project.disqualified">{{project.submitter}}</span>
+        </td>
       </ng-container>
 
       <ng-container matColumnDef="categories">
         <th mat-header-cell *matHeaderCellDef>Categories</th>
-        <td mat-cell *matCellDef="let project">{{project.categories}}</td>
+        <td mat-cell *matCellDef="let project">
+          <del *ngIf="project.disqualified">{{project.categories}}</del>
+          <span *ngIf="!project.disqualified">{{project.categories}}</span>
+        </td>
       </ng-container>
 
       <ng-container matColumnDef="actions">
@@ -47,10 +56,10 @@
         <td mat-cell *matCellDef="let project">
           <ng-container *ngIf="project.disqualified; then undqButton else dqButton"></ng-container>
           <ng-template #dqButton>
-            <button mat-button color="warn">Disqualify</button>
+            <button mat-button color="warn" (click)="qualifyProject(project, true)">Disqualify</button>
           </ng-template>
           <ng-template #undqButton>
-            <button mat-button color="accent">Undisqualify</button>
+            <button mat-button color="accent" (click)="qualifyProject(project, false)">Requalify</button>
           </ng-template>
         </td>
       </ng-container>

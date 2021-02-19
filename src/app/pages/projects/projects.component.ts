@@ -4,6 +4,8 @@ import { catchError, map } from 'rxjs/operators';
 
 import { Project } from '../../interfaces/project';
 import { AdminService } from 'src/app/services/admin.service';
+import { MatDialog } from '@angular/material/dialog';
+import { QualifyProjectComponent, QualifyProjectData } from './qualify-project/qualify-project.component';
 
 @Component({
   selector: 'projects',
@@ -28,7 +30,7 @@ export class ProjectsComponent implements OnInit {
 
   numCheckedIn: number;
 
-  constructor(private service: AdminService) {}
+  constructor(private service: AdminService, private dialog: MatDialog) {}
 
   ngOnInit() {
     this.getProjects();
@@ -63,5 +65,13 @@ export class ProjectsComponent implements OnInit {
         this.getProjects();
       }
     });
+  }
+
+  qualifyProject(project: Project, disqualified: boolean) {
+    const data: QualifyProjectData = {
+      project, disqualified,
+      cb: () => this.getProjects()
+    };
+    this.dialog.open(QualifyProjectComponent, { width: `50%`, data });
   }
 }

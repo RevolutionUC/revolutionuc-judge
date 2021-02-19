@@ -13,6 +13,7 @@ export interface FinalizeData { totalSubmissions: number; rankings: Array<Submis
 })
 export class FinalizeComponent implements OnInit {
   canSubmit = false;
+  isSubmitting = false;
   submitButtonText = `Submit`;
   submitButtonColor: ThemePalette = `primary`;
 
@@ -23,6 +24,11 @@ export class FinalizeComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    if (this.data.rankings.findIndex(s => s.project.disqualified) !== -1) {
+      this.submitButtonColor = `warn`;
+      this.submitButtonText = `One or more of your ranked projects have been disqualified`;
+      return;
+    }
     if (this.data.rankings.length > 5) {
       this.submitButtonColor = `warn`;
       this.submitButtonText = `Please only rank your top 5`;
@@ -42,12 +48,19 @@ export class FinalizeComponent implements OnInit {
   }
 
   submitRanking() {
+    this.isSubmitting = true;
     this.service.submitRanking().subscribe({
       next: () => {
+        this.isSubmitting = false;
         this.ref.close();
         this.data.cb();
       },
-      error: err => console.error(err)
+      error: err => {
+        this.isSubmitting = false;
+        this.submitButtonColor = `warn`;
+        this.submitButtonText = err.error?.message || err.message;
+        this.canSubmit = false;
+      }
     });
   }
 

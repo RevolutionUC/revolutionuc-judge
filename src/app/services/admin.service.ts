@@ -49,6 +49,10 @@ export class AdminService {
     return this.http.get<Array<Project>>(`${this.BASE_URL}/project`);
   }
 
+  qualifyProject(project: Project, disqualified?: string) {
+    return this.http.put<void>(`${this.BASE_URL}/project/${project.id}/disqualified`, { disqualified });
+  }
+
   uploadDevpostCsv(file: File) {
     const formData = new FormData();
     formData.append(`file`, file, `submissions.csv`);

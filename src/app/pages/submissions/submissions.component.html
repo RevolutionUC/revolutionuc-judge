@@ -34,8 +34,12 @@
           (cdkDropListDropped)="drop($event)"
         >
           <div class="example-box" *ngFor="let item of todo" cdkDrag>
-            {{findSubmissionById(item).project.title}}
-            <button mat-button color="primary" (click)="viewProject(findSubmissionById(item).project)">View</button>
+            <ng-container *ngIf="findSubmissionById(item) as submission">
+              <span [class]="submission.project.disqualified && 'dq'">
+                {{submission.project.title}}
+              </span>
+              <button mat-button color="primary" (click)="viewProject(submission.project)">View</button>
+            </ng-container>
           </div>
         </div>
       </div>
@@ -54,8 +58,12 @@
           (cdkDropListDropped)="drop($event)"
         >
           <div class="example-box" *ngFor="let item of rankings" cdkDrag>
-            {{findSubmissionById(item).project.title}}
-            <button mat-button color="primary" (click)="viewProject(findSubmissionById(item).project)">View</button>
+            <ng-container *ngIf="findSubmissionById(item) as submission">
+              <span [class]="submission.project.disqualified && 'dq'">
+                {{submission.project.title}}
+              </span>
+              <button mat-button color="primary" (click)="viewProject(submission.project)">View</button>
+            </ng-container>
           </div>
         </div>
       </div>

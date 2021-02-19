@@ -1,0 +1,17 @@
+<h2 mat-dialog-title>{{data.disqualified ? "Disqualify" : "Requalify"}} project?</h2>
+<form (submit)="onSubmit()">
+  <div mat-dialog-content>
+    <span *ngIf="error" style="color: red;">Error {{data.disqualified ? "disqualifying" : "requalifying"}} project!</span>
+    <mat-form-field *ngIf="data.disqualified">
+      <mat-label>Reason for disqualification</mat-label>
+      <input matInput name="reason" [(ngModel)]="reason" type="text" placeholder="because" required>
+    </mat-form-field>
+    <p *ngIf="!data.disqualified">
+      Reason for disqualification: {{data.project.disqualified}}
+    </p>
+  </div>
+  <div mat-dialog-actions>
+    <button type="submit" mat-button color="primary" [disabled]="isSubmitting">Confirm</button>
+    <button type="reset" mat-button (click)="closeDialog()">Close</button>
+  </div>
+</form>

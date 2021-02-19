@@ -49,6 +49,11 @@ mat-card-title {
   cursor: default;
 }
 
+.example-box .dq {
+  text-decoration: line-through;
+  color: red;
+}
+
 .cdk-drag-preview {
   box-sizing: border-box;
   border-radius: 4px;
