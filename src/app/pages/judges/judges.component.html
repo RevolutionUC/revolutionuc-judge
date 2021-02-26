@@ -3,6 +3,7 @@
   <button mat-icon-button color="primary" (click)="createJudge()">
     <mat-icon>person_add</mat-icon>
   </button>
+  <button mat-button color="primary" (click)="sendEmailToAll()" class="send-all">Send email to all</button>
 
   <mat-spinner *ngIf="!(judges$ | async); else finishedLoading"></mat-spinner>
   <ng-template #finishedLoading>

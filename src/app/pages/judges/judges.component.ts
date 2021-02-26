@@ -48,4 +48,9 @@ export class JudgesComponent implements OnInit {
   sendEmail(judge: Judge) {
     this.dialog.open(SendEmailDialogComponent, { width: `50%`, data: judge });
   }
+
+  sendEmailToAll() {
+    const data: Judge = { name: `All`, email: `all`, category: `General` };
+    this.dialog.open(SendEmailDialogComponent, { width: `50%`, data });
+  }
 }
