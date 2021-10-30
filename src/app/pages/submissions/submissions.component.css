@@ -14,7 +14,7 @@ mat-card-title {
 .greeting {
   float: right;
 }
-.example-container {
+.submission-container {
   width: 400px;
   max-width: 100%;
   margin: 0 25px 25px 0;
@@ -22,7 +22,7 @@ mat-card-title {
   vertical-align: top;
 }
 
-.example-list {
+.submission-list {
   border: solid 1px #ccc;
   min-height: 60px;
   background: white;
@@ -31,7 +31,7 @@ mat-card-title {
   display: block;
 }
 
-.example-box {
+.submission-box {
   padding: 5px 10px;
   border-bottom: solid 1px #ccc;
   color: rgba(0, 0, 0, 0.87);
@@ -45,11 +45,11 @@ mat-card-title {
   font-size: 14px;
 }
 
-.example-box.no-drag {
+.submission-box.no-drag {
   cursor: default;
 }
 
-.example-box .dq {
+.submission-box .dq {
   text-decoration: line-through;
   color: red;
 }
@@ -70,10 +70,10 @@ mat-card-title {
   transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
 }
 
-.example-box:last-child {
+.submission-box:last-child {
   border: none;
 }
 
-.example-list.cdk-drop-list-dragging .example-box:not(.cdk-drag-placeholder) {
+.submission-list.cdk-drop-list-dragging .submission-box:not(.cdk-drag-placeholder) {
   transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
 }
