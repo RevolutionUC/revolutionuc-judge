@@ -23,7 +23,7 @@ export class SendEmailDialogComponent {
 
   sendEmail() {
     const payload: SendEmailDto = {
-      template: `postEmailJudgeEmail`,
+      template: `infoEmailJudges`,
       recipent: this.judge.email,
       dryRun: this.dryRun.value
     };
