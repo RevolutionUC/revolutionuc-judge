@@ -59,4 +59,4 @@ $revuc-warn: mat-palette($mat-red);
 
 $revuc-theme: mat-light-theme($revuc-primary, $revuc-accent, $revuc-warn);
 
-@include mat.all-component-themes($revuc-theme);
+@include angular-material-theme($revuc-theme);
