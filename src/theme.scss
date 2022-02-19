@@ -3,16 +3,16 @@
 @include mat-core();
 
 $revuc-primary-colors: (
-  50: #ede8f3,
-  100: #d1c6e2,
-  200: #b3a1cf,
-  300: #967bbc,
-  400: #8060ad,
-  500: #6b45a0,
-  600: #63409a,
-  700: #583890,
-  800: #4e3287,
-  900: #3f2776,
+  50: #fff9e5,
+  100: #ffeebd,
+  200: #ffe394,
+  300: #ffd96d,
+  400: #ffcf55,
+  500: #ffc74d,
+  600: #ffba49,
+  700: #ffa845,
+  800: #ff9943,
+  900: #fc7e3f,
   contrast: (
     50: $dark-primary-text,
     100: $dark-primary-text,
@@ -28,16 +28,16 @@ $revuc-primary-colors: (
 );
 
 $revuc-accent-colors: (
-  50: #dcf4ff,
-  100: #a6e2ff,
-  200: #61d0ff,
-  300: #00bdfd,
-  400: #00aefb,
-  500: #009ff7,
-  600: #0092e9,
-  700: #007fd5,
-  800: #006ec1,
-  900: #004e9e,
+  50: #e2f0f2,
+  100: #b5dbdd,
+  200: #87c5c7,
+  300: #5caeb0,
+  400: #429d9e,
+  500: #358c8b,
+  600: #32807e,
+  700: #2e706d,
+  800: #2b605d,
+  900: #254441,
   contrast: (
     50: $dark-primary-text,
     100: $dark-primary-text,
