@@ -1,21 +1,35 @@
 <mat-card>
   <mat-card-title>Projects</mat-card-title>
   <form>
-    <input #fileInput type="file" style="display: none;" (change)="onFileSelect($event.target.files[0])" />
+    <input
+      #fileInput
+      type="file"
+      style="display: none"
+      (change)="onFileSelect($event.target.files[0])"
+    />
   </form>
-  <button mat-button color="primary" class="select-button" (click)="fileInput.click()">
+  <button
+    mat-button
+    color="primary"
+    class="select-button"
+    (click)="fileInput.click()"
+  >
     <mat-icon>file_copy</mat-icon>
-    {{file?.name || "Select Devpost CSV File"}}
+    {{ file?.name || "Select Devpost CSV File" }}
   </button>
-  <button mat-button color="accent" class="upload-button" (click)="uploadFile()" *ngIf="!!file">
+  <button
+    mat-button
+    color="accent"
+    class="upload-button"
+    (click)="uploadFile()"
+    *ngIf="!!file"
+  >
     <ng-container *ngIf="!isUploading">
       <mat-icon>upload</mat-icon>
       Upload
     </ng-container>
-    <ng-container *ngIf="isUploading">
-      Uploading...
-    </ng-container>
-  </button><br><br>
+    <ng-container *ngIf="isUploading"> Uploading... </ng-container></button
+  ><br /><br />
   <ng-container *ngIf="projects$ | async as projects; else loadingOrError">
     <table
       mat-table
@@ -24,42 +38,64 @@
     >
       <ng-container matColumnDef="index">
         <th mat-header-cell *matHeaderCellDef>#</th>
-        <td mat-cell *matCellDef="let index = index">{{index + 1}}</td>
+        <td mat-cell *matCellDef="let index = index">{{ index + 1 }}</td>
       </ng-container>
 
       <ng-container matColumnDef="title">
         <th mat-header-cell *matHeaderCellDef>Title</th>
         <td mat-cell *matCellDef="let project">
-          <del *ngIf="project.disqualified"><a [href]="project.url" target="_blank">{{project.title}}</a></del>
-          <span *ngIf="!project.disqualified"><a [href]="project.url" target="_blank">{{project.title}}</a></span>
+          <del *ngIf="project.disqualified"
+            ><a [href]="project.url" target="_blank">{{
+              project.title
+            }}</a></del
+          >
+          <span *ngIf="!project.disqualified"
+            ><a [href]="project.url" target="_blank">{{
+              project.title
+            }}</a></span
+          >
         </td>
       </ng-container>
 
       <ng-container matColumnDef="submitter">
         <th mat-header-cell *matHeaderCellDef>Submitter</th>
         <td mat-cell *matCellDef="let project">
-          <del *ngIf="project.disqualified">{{project.submitter}}</del>
-          <span *ngIf="!project.disqualified">{{project.submitter}}</span>
+          <del *ngIf="project.disqualified">{{ project.submitter }}</del>
+          <span *ngIf="!project.disqualified">{{ project.submitter }}</span>
         </td>
       </ng-container>
 
       <ng-container matColumnDef="categories">
         <th mat-header-cell *matHeaderCellDef>Categories</th>
         <td mat-cell *matCellDef="let project">
-          <del *ngIf="project.disqualified">{{project.categories}}</del>
-          <span *ngIf="!project.disqualified">{{project.categories}}</span>
+          <del *ngIf="project.disqualified">{{ project.categories }}</del>
+          <span *ngIf="!project.disqualified">{{ project.categories }}</span>
         </td>
       </ng-container>
 
       <ng-container matColumnDef="actions">
         <th mat-header-cell *matHeaderCellDef>Actions</th>
         <td mat-cell *matCellDef="let project">
-          <ng-container *ngIf="project.disqualified; then undqButton else dqButton"></ng-container>
+          <ng-container
+            *ngIf="project.disqualified; then undqButton; else dqButton"
+          ></ng-container>
           <ng-template #dqButton>
-            <button mat-button color="warn" (click)="qualifyProject(project, true)">Disqualify</button>
+            <button
+              mat-button
+              color="warn"
+              (click)="qualifyProject(project, true)"
+            >
+              Disqualify
+            </button>
           </ng-template>
           <ng-template #undqButton>
-            <button mat-button color="accent" (click)="qualifyProject(project, false)">Requalify</button>
+            <button
+              mat-button
+              color="accent"
+              (click)="qualifyProject(project, false)"
+            >
+              Requalify
+            </button>
           </ng-template>
         </td>
       </ng-container>
@@ -72,12 +108,14 @@
     </ng-template>
   </ng-container>
   <ng-template #loadingOrError>
-    <ng-container *ngIf="(getProjectsError$ | async); then error else loading"></ng-container>
+    <ng-container
+      *ngIf="getProjectsError$ | async; then error; else loading"
+    ></ng-container>
     <ng-template #loading>
       <mat-spinner></mat-spinner>
     </ng-template>
     <ng-template #error>
-      <span style="color: red;">There was an error loading projects</span>
+      <span style="color: red">There was an error loading projects</span>
     </ng-template>
   </ng-template>
 </mat-card>

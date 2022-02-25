@@ -19,7 +19,7 @@ export class AssignmentComponent implements OnInit {
     private adminService: AdminService,
     private assignmentService: AssignmentService,
     private dialog: MatDialog
-  ) {}
+  ) { }
 
   ngOnInit() {
     this.getGroups();
@@ -51,6 +51,20 @@ export class AssignmentComponent implements OnInit {
       error: err => {
         this.error = err.error?.message || err.message;
         this.isWorking = false;
+      },
+    });
+  }
+
+  resetAssignment() {
+    this.isWorking = true;
+    this.adminService.resetAssignment().subscribe({
+      next: () => {
+        this.groups = [];
+        this.isWorking = false;
+      },
+      error: err => {
+        this.error = err.error?.message || err.message;
+        this.isWorking = false;
       }
     });
   }
@@ -67,9 +81,5 @@ export class AssignmentComponent implements OnInit {
 
   downloadJudgeCsv() {
     this.assignmentService.downloadJudgeCsv(this.groups);
-  }
-
-  deleteUser(judge: Judge) {
-    // this.dialog.open(DeleteConfirmationComponent, { width: `50%`, data: judge });
   }
 }

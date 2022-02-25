@@ -24,7 +24,7 @@ export class PrizingComponent implements OnInit {
   constructor(
     private adminService: AdminService,
     private dialog: MatDialog
-  ) {}
+  ) { }
 
   ngOnInit() {
     this.getPrizingInfo();
@@ -44,6 +44,7 @@ export class PrizingComponent implements OnInit {
         switch (err.status) {
           case 400:
             this.indeterminateJudge = true;
+            this.error = err.error.message;
             break;
           case 404:
             this.notStarted = true;

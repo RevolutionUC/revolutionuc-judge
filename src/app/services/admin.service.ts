@@ -17,7 +17,7 @@ export class AdminService {
 
   judges$ = new BehaviorSubject<Judge[] | null>(null);
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   getJudges() {
     this.http.get<Judge[]>(`${this.BASE_URL}/judge`).subscribe(judges => {
@@ -65,6 +65,10 @@ export class AdminService {
 
   initiateAssignment() {
     return this.http.post<Array<Group>>(`${this.BASE_URL}/assignment`, {});
+  }
+
+  resetAssignment() {
+    return this.http.delete<void>(`${this.BASE_URL}/assignment`);
   }
 
   getPrizingInfo() {

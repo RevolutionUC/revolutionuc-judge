@@ -30,7 +30,7 @@ export class ProjectsComponent implements OnInit {
 
   numCheckedIn: number;
 
-  constructor(private service: AdminService, private dialog: MatDialog) {}
+  constructor(private service: AdminService, private dialog: MatDialog) { }
 
   ngOnInit() {
     this.getProjects();
@@ -63,6 +63,12 @@ export class ProjectsComponent implements OnInit {
         this.isUploading = false;
         this.file = null;
         this.getProjects();
+      },
+      error: err => {
+        console.error(err);
+        this.isUploading = false;
+        alert(`Error uploading file: ${err.message}`);
+        return of(null);
       }
     });
   }
