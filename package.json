@@ -24,6 +24,7 @@
     "core-js": "^2.5.4",
     "csvjson-json2csv": "^1.0.3",
     "rxjs": "^6.6.3",
+    "sass": "^1.55.0",
     "zone.js": "^0.10.3"
   },
   "devDependencies": {
@@ -42,7 +43,6 @@
     "karma-coverage-istanbul-reporter": "~2.0.0",
     "karma-jasmine": "~1.1.1",
     "karma-jasmine-html-reporter": "^0.2.2",
-    "node-sass": "^4.14.1",
     "protractor": "~7.0.0",
     "ts-node": "~5.0.1",
     "tslint": "~6.1.3",
