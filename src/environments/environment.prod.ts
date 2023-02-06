@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  BASE_URL: 'https://revolutionuc-api.herokuapp.com/api/v2/judging'
+  BASE_URL: 'https://revuc-api.fly.dev/api/v2/judging'
 };
