@@ -126,5 +126,8 @@
       }
     }
   },
-  "defaultProject": "PodcastDB"
+  "defaultProject": "PodcastDB",
+  "cli": {
+    "analytics": false
+  }
 }

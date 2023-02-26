@@ -62,15 +62,15 @@ export class SubmissionsComponent implements OnInit {
         event.previousIndex,
         event.currentIndex
       );
-
-      this.isUpdating = true;
-      this.service
-        .rankSubmissions(this.rankings)
-        .subscribe(j => {
-          this.rankings = j.rankings;
-          this.isUpdating = false;
-        });
     }
+
+    this.isUpdating = true;
+    this.service
+      .rankSubmissions(this.rankings)
+      .subscribe(j => {
+        this.rankings = j.rankings;
+        this.isUpdating = false;
+      });
   }
 
   viewProject(project: Project) {

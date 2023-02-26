@@ -38,6 +38,7 @@
             <ng-container *ngIf="findSubmissionById(item) as submission">
               <span [class]="submission.project.disqualified && 'dq'">
                 {{submission.project.title}}
+                <strong>({{submission.project.tableNumber}})</strong>
               </span>
               <button mat-button color="primary" (click)="viewProject(submission.project)">View</button>
             </ng-container>
@@ -62,6 +63,7 @@
             <ng-container *ngIf="findSubmissionById(item) as submission">
               <span [class]="submission.project.disqualified && 'dq'">
                 {{submission.project.title}}
+                <strong>({{submission.project.tableNumber}})</strong>
               </span>
               <button mat-button color="primary" (click)="viewProject(submission.project)">View</button>
             </ng-container>
