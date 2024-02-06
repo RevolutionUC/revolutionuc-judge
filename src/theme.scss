@@ -1,6 +1,7 @@
+@use '~@angular/material' as mat;
 @import '~@angular/material/theming';
 
-@include mat-core();
+@include mat.core();
 
 $revuc-primary-colors: (
   50: #fff9e5,
@@ -52,11 +53,11 @@ $revuc-accent-colors: (
   )
 );
 
-$revuc-primary: mat-palette($revuc-primary-colors, 800, 300, 900);
-$revuc-accent: mat-palette($revuc-accent-colors, 200, 100, 500);
+$revuc-primary: mat.define-palette($revuc-primary-colors, 800, 300, 900);
+$revuc-accent: mat.define-palette($revuc-accent-colors, 200, 100, 500);
 
-$revuc-warn: mat-palette($mat-red);
+$revuc-warn: mat.define-palette(mat.$red-palette);
 
-$revuc-theme: mat-light-theme($revuc-primary, $revuc-accent, $revuc-warn);
+$revuc-theme: mat.define-light-theme($revuc-primary, $revuc-accent, $revuc-warn);
 
-@include angular-material-theme($revuc-theme);
+@include mat.all-component-themes($revuc-theme);
