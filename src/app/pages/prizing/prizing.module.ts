@@ -12,22 +12,20 @@ import { FormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 
 @NgModule({
-  declarations: [
-    PrizingComponent
-  ],
-  imports: [
-    CommonModule,
-    FormsModule,
-    MatButtonModule,
-    MatCardModule,
-    MatFormFieldModule,
-    MatIconModule,
-    MatListModule,
-    MatProgressSpinnerModule,
-    MatSelectModule,
-    MatTableModule
-  ],
-  entryComponents: [
-  ]
+    declarations: [
+        PrizingComponent
+    ],
+    imports: [
+        CommonModule,
+        FormsModule,
+        MatButtonModule,
+        MatCardModule,
+        MatFormFieldModule,
+        MatIconModule,
+        MatListModule,
+        MatProgressSpinnerModule,
+        MatSelectModule,
+        MatTableModule
+    ]
 })
 export class PrizingModule {}

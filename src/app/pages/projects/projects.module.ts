@@ -12,25 +12,22 @@ import { MatIconModule } from '@angular/material/icon';
 import { QualifyProjectComponent } from './qualify-project/qualify-project.component';
 
 @NgModule({
-  declarations: [
-    ProjectsComponent,
-    QualifyProjectComponent
-  ],
-  imports: [
-    CommonModule,
-    FormsModule,
-    ReactiveFormsModule,
-    MatButtonModule,
-    MatCardModule,
-    MatFormFieldModule,
-    MatIconModule,
-    MatInputModule,
-    MatTableModule,
-    MatProgressSpinnerModule
-  ],
-  entryComponents: [
-    QualifyProjectComponent
-  ],
-  providers: []
+    declarations: [
+        ProjectsComponent,
+        QualifyProjectComponent
+    ],
+    imports: [
+        CommonModule,
+        FormsModule,
+        ReactiveFormsModule,
+        MatButtonModule,
+        MatCardModule,
+        MatFormFieldModule,
+        MatIconModule,
+        MatInputModule,
+        MatTableModule,
+        MatProgressSpinnerModule
+    ],
+    providers: []
 })
 export class ProjectsModule {}

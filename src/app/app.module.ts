@@ -37,53 +37,52 @@ import { AssignmentModule } from './pages/assignment/assignment.module';
 import { PrizingModule } from './pages/prizing/prizing.module';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    DashboardComponent,
-    SidenavComponent,
-    LoginComponent
-  ],
-  imports: [
-    BrowserModule,
-    BrowserAnimationsModule,
-    HttpClientModule,
-    AppRoutingModule,
-    FormsModule,
-    ReactiveFormsModule,
-    MatAutocompleteModule,
-    MatInputModule,
-    MatButtonModule,
-    MatCardModule,
-    MatDatepickerModule,
-    MatNativeDateModule,
-    MatGridListModule,
-    MatChipsModule,
-    MatIconModule,
-    MatTableModule,
-    MatListModule,
-    MatRippleModule,
-    MatMenuModule,
-    MatPaginatorModule,
-    MatBottomSheetModule,
-    MatToolbarModule,
-    MatDialogModule,
-    MatSnackBarModule,
-    MatSelectModule,
-    MatSidenavModule,
-    MatProgressSpinnerModule,
-    MatButtonModule,
-    ProjectsModule,
-    JudgesModule,
-    AssignmentModule,
-    PrizingModule,
-    SubmissionsModule
-  ],
-  entryComponents: [],
-  providers: [{
-    provide: HTTP_INTERCEPTORS,
-    useClass: AuthInterceptor,
-    multi: true
-  }],
-  bootstrap: [AppComponent]
+    declarations: [
+        AppComponent,
+        DashboardComponent,
+        SidenavComponent,
+        LoginComponent
+    ],
+    imports: [
+        BrowserModule,
+        BrowserAnimationsModule,
+        HttpClientModule,
+        AppRoutingModule,
+        FormsModule,
+        ReactiveFormsModule,
+        MatAutocompleteModule,
+        MatInputModule,
+        MatButtonModule,
+        MatCardModule,
+        MatDatepickerModule,
+        MatNativeDateModule,
+        MatGridListModule,
+        MatChipsModule,
+        MatIconModule,
+        MatTableModule,
+        MatListModule,
+        MatRippleModule,
+        MatMenuModule,
+        MatPaginatorModule,
+        MatBottomSheetModule,
+        MatToolbarModule,
+        MatDialogModule,
+        MatSnackBarModule,
+        MatSelectModule,
+        MatSidenavModule,
+        MatProgressSpinnerModule,
+        MatButtonModule,
+        ProjectsModule,
+        JudgesModule,
+        AssignmentModule,
+        PrizingModule,
+        SubmissionsModule
+    ],
+    providers: [{
+            provide: HTTP_INTERCEPTORS,
+            useClass: AuthInterceptor,
+            multi: true
+        }],
+    bootstrap: [AppComponent]
 })
 export class AppModule { }

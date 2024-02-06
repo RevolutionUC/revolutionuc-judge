@@ -16,30 +16,25 @@ import { DeleteConfirmationComponent } from './delete-confirmation/delete-confir
 import { SendEmailDialogComponent } from './send-email-dialog/send-email-dialog.component';
 
 @NgModule({
-  declarations: [
-    JudgesComponent,
-    NewJudgeComponent,
-    DeleteConfirmationComponent,
-    SendEmailDialogComponent
-  ],
-  imports: [
-    CommonModule,
-    ReactiveFormsModule,
-    MatButtonModule,
-    MatCardModule,
-    MatCheckboxModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatIconModule,
-    MatProgressSpinnerModule,
-    MatSelectModule,
-    MatTableModule,
-  ],
-  entryComponents: [
-    NewJudgeComponent,
-    DeleteConfirmationComponent,
-    SendEmailDialogComponent
-  ],
-  providers: []
+    declarations: [
+        JudgesComponent,
+        NewJudgeComponent,
+        DeleteConfirmationComponent,
+        SendEmailDialogComponent
+    ],
+    imports: [
+        CommonModule,
+        ReactiveFormsModule,
+        MatButtonModule,
+        MatCardModule,
+        MatCheckboxModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatIconModule,
+        MatProgressSpinnerModule,
+        MatSelectModule,
+        MatTableModule,
+    ],
+    providers: []
 })
 export class JudgesModule {}

@@ -16,29 +16,25 @@ import { ProjectViewComponent } from './project-view/project-view.component';
 import { FinalizeComponent } from './finalize/finalize.component';
 
 @NgModule({
-  declarations: [
-    SubmissionsComponent,
-    ProjectViewComponent,
-    FinalizeComponent
-  ],
-  imports: [
-    CommonModule,
-    ReactiveFormsModule,
-    MatButtonModule,
-    MatCardModule,
-    MatCheckboxModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatIconModule,
-    MatProgressSpinnerModule,
-    MatSelectModule,
-    MatTableModule,
-    DragDropModule
-  ],
-  entryComponents: [
-    ProjectViewComponent,
-    FinalizeComponent
-  ],
-  providers: []
+    declarations: [
+        SubmissionsComponent,
+        ProjectViewComponent,
+        FinalizeComponent
+    ],
+    imports: [
+        CommonModule,
+        ReactiveFormsModule,
+        MatButtonModule,
+        MatCardModule,
+        MatCheckboxModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatIconModule,
+        MatProgressSpinnerModule,
+        MatSelectModule,
+        MatTableModule,
+        DragDropModule
+    ],
+    providers: []
 })
 export class SubmissionsModule {}

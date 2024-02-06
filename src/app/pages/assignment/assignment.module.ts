@@ -10,20 +10,18 @@ import { MatListModule } from '@angular/material/list';
 import { AssignmentService } from './assignment.service';
 
 @NgModule({
-  declarations: [
-    AssignmentComponent
-  ],
-  imports: [
-    CommonModule,
-    MatButtonModule,
-    MatCardModule,
-    MatIconModule,
-    MatListModule,
-    MatProgressSpinnerModule,
-    MatTableModule
-  ],
-  entryComponents: [
-  ],
-  providers: [AssignmentService]
+    declarations: [
+        AssignmentComponent
+    ],
+    imports: [
+        CommonModule,
+        MatButtonModule,
+        MatCardModule,
+        MatIconModule,
+        MatListModule,
+        MatProgressSpinnerModule,
+        MatTableModule
+    ],
+    providers: [AssignmentService]
 })
 export class AssignmentModule {}
