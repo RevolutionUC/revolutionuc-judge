@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
+import { MatLegacyDialog as MatDialog } from '@angular/material/legacy-dialog';
 import { Group, Judge } from '../../interfaces/judge';
 import { AdminService } from '../../services/admin.service';
 import { AssignmentService } from './assignment.service';

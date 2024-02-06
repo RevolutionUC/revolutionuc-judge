@@ -4,7 +4,7 @@ import { catchError, map } from 'rxjs/operators';
 
 import { Project } from '../../interfaces/project';
 import { AdminService } from 'src/app/services/admin.service';
-import { MatDialog } from '@angular/material/dialog';
+import { MatLegacyDialog as MatDialog } from '@angular/material/legacy-dialog';
 import { QualifyProjectComponent, QualifyProjectData } from './qualify-project/qualify-project.component';
 
 @Component({

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
+import { MatLegacyDialog as MatDialog } from '@angular/material/legacy-dialog';
 import { Category } from 'src/app/interfaces/category';
 import { Submission } from 'src/app/interfaces/submission';
 import { AdminService } from '../../services/admin.service';
