@@ -112,7 +112,6 @@
       }
     }
   },
-  "defaultProject": "PodcastDB",
   "cli": {
     "analytics": false
   }

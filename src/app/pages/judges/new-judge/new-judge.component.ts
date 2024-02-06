@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { UntypedFormControl, UntypedFormGroup } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { Category } from 'src/app/interfaces/category';
 import { AdminService } from '../../../services/admin.service';
@@ -10,10 +10,10 @@ import { AdminService } from '../../../services/admin.service';
   styleUrls: ['./new-judge.component.css']
 })
 export class NewJudgeComponent implements OnInit {
-  newJudge = new FormGroup({
-    name: new FormControl(``),
-    email: new FormControl(``),
-    category: new FormControl(``)
+  newJudge = new UntypedFormGroup({
+    name: new UntypedFormControl(``),
+    email: new UntypedFormControl(``),
+    category: new UntypedFormControl(``)
   });
 
   isSubmitting = false;

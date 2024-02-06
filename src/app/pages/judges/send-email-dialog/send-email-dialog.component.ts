@@ -1,5 +1,5 @@
 import { Component, Inject } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { UntypedFormControl } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { Judge } from 'src/app/interfaces/judge';
 import { AdminService } from 'src/app/services/admin.service';
@@ -13,7 +13,7 @@ import { SendEmailDto } from '../../../interfaces/email';
 export class SendEmailDialogComponent {
   state: 'READY' | 'PENDING' | 'DONE' = `READY`;
 
-  dryRun = new FormControl(true);
+  dryRun = new UntypedFormControl(true);
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public judge: Judge,
