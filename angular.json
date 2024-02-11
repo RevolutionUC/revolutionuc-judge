@@ -59,18 +59,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "buildTarget": "RevUc-Judge:build"
+            "browserTarget": "RevUc-Judge:build"
           },
           "configurations": {
             "production": {
-              "buildTarget": "RevUc-Judge:build:production"
+              "browserTarget": "RevUc-Judge:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "buildTarget": "RevUc-Judge:build"
+            "browserTarget": "RevUc-Judge:build"
           }
         },
         "test": {
