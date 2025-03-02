@@ -9,7 +9,8 @@
     </div>
     <h3>
       {{judge.group?.name}} <br>
-      Judging category: {{judge.category}} <br> <br>
+      Judging category: {{judge.category.name}} <br>
+      Category Description: {{judge.category.description}} <br> <br>
       <button mat-raised-button color="accent" (click)="finalizeRankings()" *ngIf="!judge.isFinal">Finalize rankings</button>
       <button mat-raised-button color="accent" disabled *ngIf="judge.isFinal">Rankings Finalized</button>
       <p>Please only rank your top 5.</p>

@@ -44,7 +44,7 @@ export class SubmissionsComponent implements OnInit {
   getJudge() {
     this.isLoading = true;
     this.service.getJudge().subscribe(judge => {
-      judge.category = (judge.category as Category).name;
+      judge.category = judge.category as Category;
       this.judge = judge;
       this.rankings = judge.rankings || [];
       this.todo.push(...judge.group?.submissions.map(s => s.id).filter(id => !judge.rankings?.includes(id)));
